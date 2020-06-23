@@ -1,36 +1,70 @@
 package com.company;
 
 public class Challenge2New {
+    public static int Size = 8;
     public static void main(String[] args) { //main method
-        //Call all my functions
-        line();
-        top();
+       line();
+        Top();
         bottom();
         line();
-        top();
+        Top();
         bottom();
-        top();
+        Top();
         line();
-
-
     }
+    public static void line(){
+        System.out.print("+");
+        for (int i=0; i<Size*2+1; i++){
+            System.out.print("-");
+        }
+        System.out.println("+");
+    }
+        public static void Top() {
+            for (int line = 1; line < Size; line++) {
+                System.out.print("|");
+                for (int spaces = 1; spaces < -1 * line + Size + 2; spaces++) {
+                    System.out.print(" ");
+                }
+                for (int dots = 1; dots <= 1 * line - 1; dots++) {
+                    System.out.print("/");
+                }
+                System.out.print("*");
+                for (int dots = 1; dots <= 1 * line - 1; dots++) {
+                    System.out.print("\\");
+                }
+                for (int spaces = 1; spaces < -1 * line + Size + 2; spaces++) {
+                    System.out.print(" ");
+                }
+                System.out.println("|");
 
-    public static void top() {
-	// write your co
-        for (int line =1; line <SIZE+1; line ++){
-            System.out.print("l");
-            for (int spaces=1; spaces <-2*line+2*SIZE; spaces++){
-                System.out.print(" ");
-            }
-            System.out.print("<>");
-            for (int dots =1; dots<= 4*line-4; dots++){
-                System.out.print(".");
+
             }
         }
+            public static void bottom(){
+
+
+                for (int line = 1; line <Size; line++){
+                    System.out.print("|");
+                    for (int spaces = 1; spaces <=1 *line; spaces++){
+                        System.out.print(" ");
+                    }
+                    for (int dots = 1; dots <=-1 *line +Size; dots++){
+                        System.out.print("\\");
+                    }
+                    System.out.print("*");
+                    for (int dots = 1; dots <=-1 *line +Size; dots++){
+                        System.out.print("/");
+                    }
+                    for (int spaces = 1; spaces <=1 *line ; spaces++){
+                        System.out.print(" ");
+                    }
+                    System.out.println("|");
+
+
+
+                }
+    }
 }
 
-
-
-}
 
 
