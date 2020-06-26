@@ -1,7 +1,7 @@
 package com.company;
 import java.util.*;
 
-public class gangstanamenew {
+public class gangstaname {
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
 
