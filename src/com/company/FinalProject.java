@@ -12,8 +12,6 @@ public class FinalProject {
         String message = returning(name);
         System.out.println(message);
         int n;
-        File file = new File("/Users/lauren2/IdeaProjects/Summer2020/src/com/company/FinalProject.java");
-        Scanner fileinput = new Scanner(file);
         String words;
         String answer = " ";
         do {
@@ -22,6 +20,8 @@ public class FinalProject {
         } while (!answer.contains("start"));
 
         do {
+            File file = new File("/Users/lauren2/IdeaProjects/Summer2020/src/com/company/FinalProject.java");
+            Scanner fileinput = new Scanner(file);
             System.out.println("Would you like to play the WORD, INTEGER or DOUBLE game or QUIT to stop?");
             answer = input.next();
             answer = answer.toUpperCase();
@@ -42,7 +42,8 @@ public class FinalProject {
         } while (answer.contains("DOU") || answer.contains("INT") || answer.contains("WOR"));
         System.out.println("Thanks for playing! Your total number of games played was " + times + ". Your final score was " + wins);
     }
-    public static void words(Scanner input, Scanner fileinput){
+
+    public static void words(Scanner input, Scanner fileinput) {
         times++;
         System.out.println("Guess what Disney Princess I'm thinking of!");
         String solution = input.next();
@@ -50,7 +51,7 @@ public class FinalProject {
         while (fileinput.hasNextLine()) {
             other = fileinput.next();
             if (other.equals(solution)) {
-                wins ++;
+                wins++;
                 System.out.println("Congrats! That was the correct answer!!");
                 break;
 
@@ -59,46 +60,48 @@ public class FinalProject {
 
     }
 
-    public static void integers(Scanner input, Scanner fileinput) {
-        times++;
+    public static void integers(Scanner input, Scanner fileinput) { //method for the integers game
+        times++; //add to number of tries each time played
         System.out.println("Guess what whole numbers I'm thinking of between 1 and 100!");
-        int answer = input.nextInt();
-        String problem = " ";
-        while (fileinput.hasNextLine()) {
-            if (fileinput.hasNextInt() && fileinput.nextInt() == answer) {
-                wins++;
+        int answer = input.nextInt(); //defines int variable
+        String problem = " "; //defines new string variable
+        while (fileinput.hasNextLine()) { //brings in values and answers from file
+            if (fileinput.hasNextInt()) {
+                if (fileinput.nextInt() == answer) {
+                }//only does the following if answer is correct
+                wins++; //if this is true, add to wins
                 System.out.println("Congrats! That was the correct answer!!");
-                break;
+                break;//resumes at the next statement following the loop
             } else {
-                problem = fileinput.next();
-                System.out.println(problem);
+                problem = fileinput.next(); //brings in file scanner
+                System.out.println(problem); //prints file scanner
             }
         }
     }
 
-    public static void doublem(Scanner input, Scanner fileinput){
-        times++;
-        System.out.println("Guess what decimals I'm thinking of between 0.0 and 3.0!");
-        double working = input.nextDouble();
-        String outcome = " ";
-        while (fileinput.hasNextDouble()) {
-            if (fileinput.hasNextDouble() && fileinput.nextDouble() == working) {
-                wins++;
-                System.out.println("Congrats! That was the correct answer!!");
-                break;
-            } else {
-                String answers = " ";
-                System.out.println("Your answer is incorrect. Would you like to try again?");
-                answers = fileinput.nextLine();
+        public static void doublem (Scanner input, Scanner fileinput){
+            times++;
+            System.out.println("Guess what decimals I'm thinking of between 0.0 and 3.0!");
+            double working = input.nextDouble();
+            String outcome = " ";
+            while (fileinput.hasNextDouble()) {
+                if (fileinput.hasNextDouble()) {
 
-                if(!outcome.contains("y")) { System.out.println("Game suspended. Thank you for playing.");
+                    if (fileinput.nextDouble() == working) {
+                        wins++;
+                        System.out.println("Congrats! That was the correct answer!!");
+                        break;
+                    }
+                }else {
+                   outcome= fileinput.next();
 
+                    }
                 }
             }
+
+        public static String returning (String name){
+            String message = ("Hello " + name);
+            return message;
         }
     }
-    public static String returning(String name) {
-        String message = ("Hello " + name);
-        return message;
-    }
-}
+
